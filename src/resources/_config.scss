@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+// Tipografía
+@font-face{
+    font-family: 'Geom';
+    src: url('./Geom-VariableFont_wght.ttf');
+}
+@font-face{
+    font-family: 'Inter';
+    src: url('./Inter-VariableFont_wght.ttf');
+}
+
+// Variables de colores, fuentes y breakpoints
+$color-primary: #f7eddb;
+$color-secondary: #7a723e;
+$color-oscuro: #090909;
+$color-claro: #e0e0e0;
+
+$fuenteTitulos: 'Geom', sans-serif;
+$fuenteTexto: 'Inter', sans-serif;
+
+$tablet: 768px;
+$desktop: 1200px;
+
+$padMin: 1.5rem;
+
+nav, header, main, footer, section, article{
+    width: 100%;
+}
+header, main, footer, section{
+    display: flex;
+    flex-direction: column;
+    align-items: center; //Eje-X
+    justify-content: flex-start; //Eje-Y
+}
+nav{
+    height: 10dvh;
+    background-color: $color-primary;
+}
+header{
+    height: 90dvh;
+    background-color: $color-secondary;
+    justify-content: center; //Eje-Y
+}
+main{
+    background-color: $color-claro;
+    row-gap: 3rem;
+    @media only screen and (min-width: $tablet){
+        row-gap: 4rem;
+        
+    }
+    @media only screen and (min-width: $desktop){
+        row-gap: 6rem;
+    }
+}
+footer{
+    background-color: $color-oscuro;
+    height: 400px;
+}
+
+section{
+    background-color: $color-primary;
+    padding: $padMin 0;
+    row-gap: 2rem;
+    @media only screen and (min-width: $tablet){
+        padding: 4rem 0;
+        
+    }
+    @media only screen and (min-width: $desktop){
+        padding: 6rem 0;
+        
+    }
+}
+
+article{
+    background-color: $color-secondary;
+    width: 100%;
+    padding: $padMin;
+    @media only screen and (min-width: $tablet){
+        width: 90%;
+        
+    }
+    @media only screen and (min-width: $desktop){
+        width: 60%;
+        
+    }
+}
+
+h1, h2, h3{
+    font-family: $fuenteTitulos;
+    color: $color-oscuro;
+}
+
+.boton{
+    padding: 0.5rem 2rem;
+    background-color: $color-primary;
+    color: $color-oscuro;
+    text-decoration: none;
+    font-family: $fuenteTexto;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+
+    &:hover{
+        background-color: darken($color-primary, 10%);
+        transform: scale(.9);
+    }
+    &:active{
+        background-color: darken($color-primary, 10%);
+        transform: scale(.85);
+    }
+}
