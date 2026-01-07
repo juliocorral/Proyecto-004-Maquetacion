@@ -14,6 +14,14 @@
         row-gap: 4rem;
     }
 
+    >:nth-child(1){
+        width: 100%; // Sin esto no funciona el text-align
+        text-align: left;
+        @media only screen and (min-width: c.$desktop){
+            text-align: center;
+        }
+    }
+
     img{
         width: 100%;
         height: 50dvh;
