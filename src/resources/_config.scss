@@ -17,9 +17,10 @@
 
 // Variables de colores, fuentes y breakpoints
 $color-primary: #f7eddb;
-$color-secondary: #7a723e;
+$color-secondary: #a8a484;
 $color-oscuro: #090909;
 $color-claro: #e0e0e0;
+$color-sombra: rgba(20, 20, 20, 0.5);
 
 $fuenteTitulos: 'Geom', sans-serif;
 $fuenteTexto: 'Inter', sans-serif;
@@ -64,6 +65,7 @@ footer{
 }
 
 section{
+    min-width: 500px;
     background-color: $color-primary;
     padding: $padMin 0;
     row-gap: 2rem;
