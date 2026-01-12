@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: flex-start;
     row-gap: 2rem;
+    
     @media only screen and (min-width: c.$tablet){
         row-gap: 3rem;
     }
@@ -23,9 +24,13 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         align-items: flex-start;
         gap: 1rem;
+
+        @media only screen and (min-width: c.$tablet){
+            gap: 1.5rem;
+        }
     }
 
     .ficha{
@@ -35,7 +40,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         row-gap: 1rem;
-        background-color: c.$color-claro;
+        //background-color: c.$color-claro;
 
         @media only screen and (min-width: c.$tablet){
             width: 30%;
@@ -53,6 +58,7 @@
 
         p{
             font-size: clamp(0.8rem, 3vw, 1rem);
+            color: c.$color-oscuro;
         }
     }
 }

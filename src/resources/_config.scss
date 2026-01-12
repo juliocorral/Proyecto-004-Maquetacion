@@ -51,6 +51,7 @@ header{
 main{
     background-color: $color-claro;
     row-gap: 3rem;
+    
     @media only screen and (min-width: $tablet){
         row-gap: 4rem;
         
@@ -69,6 +70,7 @@ section{
     background-color: $color-primary;
     padding: $padMin 0;
     row-gap: 2rem;
+    
     @media only screen and (min-width: $tablet){
         padding: 4rem 0;
         
@@ -83,6 +85,7 @@ article{
     background-color: $color-secondary;
     width: 100%;
     padding: $padMin;
+    
     @media only screen and (min-width: $tablet){
         width: 90%;
         
