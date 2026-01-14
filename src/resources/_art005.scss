@@ -1,0 +1,95 @@
+@use 'config.scss' as c;
+
+.art005{
+    width: 100%;
+    padding: c.$padMin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    row-gap: 2rem;
+    
+    @media only screen and (min-width: c.$tablet){
+        row-gap: 3rem;
+    }
+    @media only screen and (min-width: c.$desktop){
+        row-gap: 4rem;
+    }
+
+    p{
+        font-family: c.$fuenteTexto;
+    }
+
+    >p{
+        width: 100%;
+        @media only screen and (min-width: c.$tablet){
+            width: 80%;
+        }
+         @media only screen and (min-width: c.$desktop){
+            width: 60%;
+        }
+    }
+
+    >div{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1rem;
+
+        @media only screen and (min-width: c.$tablet){
+            gap: 1.5rem;
+        }
+    }
+
+    .ficha{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+        background-color: c.$color-primary;
+        padding: c.$padMin;
+        border-radius: 10px;
+
+        @media only screen and (min-width: c.$tablet){
+            width: 48%;
+        }
+         @media only screen and (min-width: c.$desktop){
+            width: 23%;
+        }
+        
+        >img{
+            width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        >div{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1rem;
+
+            >p{
+                text-wrap: balance;
+                @media only screen and (min-width: c.$tablet){
+                    min-height: 60px;
+                }
+            }
+
+            :nth-last-child(1){
+                color: c.$color-oscuro;
+                text-decoration: none;
+            }
+        }
+
+        a{
+            font-family: c.$fuenteTexto;
+        }
+    }
+}

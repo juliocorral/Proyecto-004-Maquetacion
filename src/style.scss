@@ -3,8 +3,11 @@
 @use './resources/_art002.scss';
 @use './resources/_art003.scss';
 @use './resources/_art004.scss';
+@use './resources/_art005.scss';
+@use './resources/_art006.scss';
 
 
+// Modificar un recurso existente importado (art003)
 .art003{
     width: 80%;
     background-color: c.$color-oscuro;

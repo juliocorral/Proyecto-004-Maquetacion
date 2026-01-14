@@ -14,6 +14,10 @@
         row-gap: 4rem;
     }
 
+    p{
+        font-family: c.$fuenteTexto;
+    }
+
     >p{
         width: 100%; // Sin esto no funciona el text-align
         text-align: left;
@@ -22,8 +26,8 @@
     >div{
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
         gap: 1rem;

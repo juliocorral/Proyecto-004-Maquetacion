@@ -1,0 +1,59 @@
+@use 'config.scss' as c;
+
+.art006{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+
+    @media only screen and (min-width: c.$tablet){
+        flex-direction: row;
+    }
+
+    >div{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1rem;
+
+        @media only screen and (min-width: c.$tablet){
+            gap: 1.5rem;
+        }
+    }
+
+    img{
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    .btn{
+        padding: 0.5rem 2rem;
+        background-color: c.$color-primary;
+        color: c.$color-oscuro;
+        text-decoration: none;
+        font-family: c.$fuenteTexto;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        transition: 0.5s ease;
+
+        &:hover{
+            background-color: darken(c.$color-primary, 10%);
+            transform: scale(.9);
+        }
+        &:active{
+            background-color: darken(c.$color-primary, 10%);
+            transform: scale(.85);
+        }
+    }
+
+    &.reverse{
+        @media only screen and (min-width: c.$tablet){
+            flex-direction: row-reverse;
+        }
+    }
+}

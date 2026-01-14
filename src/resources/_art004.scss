@@ -54,8 +54,8 @@
     }    
 
     @media only screen and (min-width: c.$tablet){
-        grid-template-rows: 20dvh;
-        grid-template-columns: 40% auto;
+        grid-auto-rows: 20% 20% 20% 20% auto;
+        grid-auto-columns: 40% auto;
         grid-template-areas:
             'area01 area02'
             'area03 area03'
@@ -64,7 +64,8 @@
             'area07 area08';
     }
     @media only screen and (min-width: c.$desktop){
-        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        grid-auto-columns: 20% 30% 30% auto;
         grid-template-areas:
             'area01 area02 area04 area05'
             'area03 area03 area04 area06'
