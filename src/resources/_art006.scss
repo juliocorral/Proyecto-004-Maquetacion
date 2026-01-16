@@ -1,54 +1,20 @@
 @use 'config.scss' as c;
 
 .art006{
-    width: 80%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; // Eje X
+    align-items: stretch;   // Eje Y
+    padding: c.$padMin;
 
     @media only screen and (min-width: c.$tablet){
-        flex-direction: row;
+        width: 90%;
+        padding: initial;
     }
-
-    >div{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: stretch;
-        gap: 1rem;
-
-        @media only screen and (min-width: c.$tablet){
-            gap: 1.5rem;
-        }
-    }
-
-    img{
-        width: 50%;
-        border-radius: 10px;
-    }
-
-    .btn{
-        padding: 0.5rem 2rem;
-        background-color: c.$color-primary;
-        color: c.$color-oscuro;
-        text-decoration: none;
-        font-family: c.$fuenteTexto;
-        letter-spacing: 2px;
-        border-radius: 3px;
-        transition: 0.5s ease;
-
-        &:hover{
-            background-color: darken(c.$color-primary, 10%);
-            transform: scale(.9);
-        }
-        &:active{
-            background-color: darken(c.$color-primary, 10%);
-            transform: scale(.85);
-        }
+    @media only screen and (min-width: c.$desktop){
+        width: 80%;
     }
 
     &.reverse{
@@ -56,4 +22,73 @@
             flex-direction: row-reverse;
         }
     }
+
+    >img{
+        width: 100%;
+        height: 40dvh;
+        object-fit: cover;
+        object-position: center;
+        @media only screen and (min-width: c.$tablet){
+            width: 60%;
+            height: auto;
+        }
+    }
+
+    >div{
+        width: 100%;
+        padding: c.$padMin;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start; // Eje X
+        align-items: flex-start; // Eje Y
+        gap: 1rem;
+
+        @media only screen and (min-width: c.$tablet){
+            width: 40%;
+            gap: 1.5rem;
+        }
+
+        p{
+            font-family: c.$fuenteTexto;
+            color: c.$color-oscuro;
+            line-height: 1.2rem;
+            text-wrap: balance;
+        }
+
+        .btn{
+            padding: 0.5rem 2rem;
+            background-color: c.$color-primary;
+            color: c.$color-oscuro;
+            text-decoration: none;
+            font-family: c.$fuenteTexto;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            transition: 0.5s ease;
+
+            &:hover{
+                background-color: darken(c.$color-primary, 10%);
+                transform: scale(.9);
+            }
+            &:active{
+                background-color: darken(c.$color-primary, 10%);
+                transform: scale(.85);
+            }
+        }
+    
+        >:nth-child(1){
+            order: 1;
+        }
+        >:nth-child(2){
+            order: 2;
+        }
+        >:nth-child(3){
+            order: 4;
+        }
+        >:nth-child(4){
+            order: 3;
+        }
+    }
+
+    
 }

@@ -84,11 +84,9 @@ section{
 article{
     background-color: $color-secondary;
     width: 100%;
-    padding: $padMin;
     
     @media only screen and (min-width: $tablet){
-        width: 90%;
-        
+        width: 90%;        
     }
     @media only screen and (min-width: $desktop){
         width: 60%;

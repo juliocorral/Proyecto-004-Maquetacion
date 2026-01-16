@@ -15,6 +15,7 @@
         'area06'
         'area07'
         'area08';    
+    padding: c.$padMin;
     
     >:nth-child(1){
         grid-area: area01;

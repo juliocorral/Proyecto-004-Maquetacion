@@ -1,0 +1,191 @@
+@use 'config.scss' as c;
+
+.artform01{
+    width: 100%;
+    padding: c.$padMin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   // Eje X
+    justify-content: flex-start; // Eje Y
+    row-gap: 2rem;
+    @media only screen and (min-width: c.$tablet){
+        width: 90%;
+        padding: initial;
+    }
+    @media only screen and (min-width: c.$desktop){
+        width: 80%;
+    }
+
+    >:nth-child(1){
+        width: 100%;
+        text-align: left;
+    }
+
+    >div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;   // Eje X
+        justify-content: flex-start; // Eje Y
+        row-gap: 2rem;
+        @media only screen and (min-width: c.$tablet){
+            flex-direction: row;
+            justify-content: center; // Eje X
+            align-items: flex-start;   // Eje Y
+            column-gap: 2rem;
+        }
+
+        .contenedor-form{     
+            order: 2;          
+            width: 100%;
+            @media only screen and (min-width: c.$tablet){
+                order: 1;
+                padding: c.$padMin;
+            } 
+            @media only screen and (min-width: c.$desktop){
+                width: 50%;
+            }  
+
+            form{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; // Eje X
+                justify-content: flex-start; // Eje Y
+                row-gap: 0.5rem;
+
+                label{
+                    margin-top: 0.5rem;
+                    font-family: c.$fuenteTexto;
+                }
+                input, textarea{
+                    width: 100%;
+                    padding: 0.5rem 1rem;
+                    font-size: clamp(1rem, 3vw, 1.25rem);
+                    font-family: c.$fuenteTexto;
+                }
+                textarea{
+                    min-width: 100%;
+                    max-width: 100%;
+                    min-height: 100px;
+                    max-height: 300px;
+                    resize: vertical;
+                }
+
+            }
+        }
+
+        .contenedor-info{     
+            order: 1;          
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; // Eje X
+            justify-content: flex-start; // Eje Y
+            row-gap: 2rem;
+            @media only screen and (min-width: c.$tablet){
+                order: 2;
+                padding: c.$padMin;
+            } 
+            @media only screen and (min-width: c.$desktop){
+                width: 50%;
+            } 
+
+            ul{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start; // Eje X
+                justify-content: flex-start; // Eje Y
+                row-gap: 1rem; 
+                
+                li a {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start; // Eje X
+                    align-items: flex-start; // Eje Y
+                    column-gap: 0.5rem;
+                    font-family: c.$fuenteTexto;
+                    text-decoration: none;
+                    color: c.$color-oscuro;
+
+                    &:hover img, &:hover span{
+                        filter: invert(34%) sepia(83%) saturate(747%) hue-rotate(186deg) brightness(95%) contrast(88%);
+                    }
+                }
+                
+            }
+            iframe{
+                border-radius: 10px;
+            }
+        } 
+    }
+
+    
+
+    .btn{
+        padding: 0.5rem 2rem;
+        background-color: c.$color-primary;
+        color: c.$color-oscuro;
+        text-decoration: none;
+        font-family: c.$fuenteTexto;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        transition: 0.5s ease;
+
+        &:hover{
+            background-color: darken(c.$color-primary, 10%);
+            transform: scale(.9);
+        }
+        &:active{
+            background-color: darken(c.$color-primary, 10%);
+            transform: scale(.85);
+        }
+    }
+
+        ul{
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                row-gap: 0.5rem;
+                @media only screen and (min-width: c.$tablet){
+                    row-gap: 0.75rem;
+                }
+                @media only screen and (min-width: c.$desktop){
+                    row-gap: 1rem;
+                }
+            
+                li{
+                    font-size: 1rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 0.5rem;
+                    font-family: c.$fuenteTexto;
+
+                    img{
+                        width: 20px;
+                        transition: 0.2s ease-in-out;
+                        filter: invert(14%) sepia(42%) saturate(788%) hue-rotate(14deg) brightness(92%) contrast(97%);
+                        @media only screen and (min-width: c.$tablet){
+                            width: 25px;
+                        }
+                        @media only screen and (min-width: c.$desktop){
+                            width: 30px;
+                        }
+                    }
+                    span{
+                        transition: 0.2s ease-in-out;
+                    }
+                }
+            }
+    
+
+        
+
+    
+
+}

@@ -6,8 +6,10 @@
     align-items: center;
     justify-content: flex-start;
     row-gap: 2rem;
+    padding: c.$padMin;
     @media only screen and (min-width: c.$tablet){
         row-gap: 3rem;
+        padding: initial;
     }
     @media only screen and (min-width: c.$desktop){
         row-gap: 4rem;

@@ -40,6 +40,7 @@
                     <a href="#" class="boton">CTA</a>
                 </article>
 
+                <!-- FICHAS del equipo -->
                 <article class="art005">
                     <h3>(h3) Nuestro equipo</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate eum blanditiis iste reprehenderit autem? Debitis est iure ipsa deserunt atque voluptates tenetur dolor vitae animi modi nulla, sint voluptatum dolore ducimus doloremque eos, repudiandae error provident pariatur autem? Illum molestias corporis vitae necessitatibus nihil error suscipit atque omnis pariatur maiores!</p>
@@ -81,6 +82,7 @@
                     </div>
                 </article>
 
+                <!-- LISTADO de valores -->
                 <article class="art002">
                     <h3>(h3) Nuestros valores</h3>
                     <div>
@@ -170,6 +172,7 @@
                     </div>
                 </article>
 
+                <!-- FICHAS de beneficios de los ingredientes -->
                 <article class="art003">
                     <h3>(h3) Beneficios de los ingredientes</h3>
 
@@ -210,7 +213,15 @@
                 </article>
 
                 <article class="art006">
-                    <img src="https://dummyimage.com/500x500" alt="" title="" />
+                    <img srcset="https://dummyimage.com/500x500 500w,
+                                 https://dummyimage.com/1800x1100 1800w,
+                                 https://dummyimage.com/2560x1200 2560w"
+                    
+                    sizes="(width <= 800px) 600px,
+                           (width <= 1500px) 1200px,
+                           2560px"                    
+                    
+                    src="https://dummyimage.com/500x500" alt="" title="" />
                     <div>
                         <h3>(h3) Panadería</h3>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum, ipsum recusandae quaerat eveniet vitae molestiae eos laboriosam voluptatibus eligendi.</p>
@@ -220,7 +231,15 @@
                 </article>
 
                  <article class="art006 reverse">
-                    <img src="https://dummyimage.com/500x500" alt="" title="" />
+                    <img srcset="https://dummyimage.com/500x500 500w,
+                                 https://dummyimage.com/1800x1100 1800w,
+                                 https://dummyimage.com/2560x1200 2560w"
+                    
+                    sizes="(width <= 800px) 600px,
+                           (width <= 1500px) 1200px,
+                           2560px"                    
+                    
+                    src="https://dummyimage.com/500x500" alt="" title="" />
                     <div>
                         <h3>(h3) Pastelería</h3>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum, ipsum recusandae quaerat eveniet vitae molestiae eos laboriosam voluptatibus eligendi.</p>
@@ -230,7 +249,15 @@
                 </article>
 
                  <article class="art006">
-                    <img src="https://dummyimage.com/500x500" alt="" title="" />
+                    <img srcset="https://dummyimage.com/500x500 500w,
+                                 https://dummyimage.com/1800x1100 1800w,
+                                 https://dummyimage.com/2560x1200 2560w"
+                    
+                    sizes="(width <= 800px) 600px,
+                           (width <= 1500px) 1200px,
+                           2560px"                    
+                    
+                    src="https://dummyimage.com/500x500" alt="" title="" />
                     <div>
                         <h3>(h3) Torrijas</h3>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum, ipsum recusandae quaerat eveniet vitae molestiae eos laboriosam voluptatibus eligendi.</p>
@@ -244,8 +271,74 @@
             <section>
                 <h2>(h2) Contacto</h2>
 
-                <article>
-                    
+                <article class="artform01">
+                    <h3>(h3) Solicitar información</h3>
+                    <div>
+                        <div class="contenedor-form">
+                            <form action="#" method="post">
+                                <!-- nombre -->
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" minlength="3" maxlength="30" required />
+                                
+                                <!-- teléfono -->
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" name="telefono" id="telefono" />
+                                
+                                <!-- email -->
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" name="email" id="email" required />
+                                
+                                <!-- mensaje -->
+                                <label for="mensaje">Mensaje</label>
+                                <textarea name="mensaje" id="mensaje" rows="7" required></textarea>
+                                
+                                <!-- aceptar términos -->
+                                <label for="aceptar">Aceptar términos y condiciones de privacidad</label>
+                                <input type="checkbox" name="aceptar" id="aceptar" />
+                                
+                                <!-- captcha -->
+                                <label for="captcha">Resuelve</label>
+                                <div class="captcha">
+                                    <span id="num1">3</span>
+                                    <span>+</span>
+                                    <span id="num2">8</span>
+                                    <input type="text" name="respuesta" id="respuesta" required />
+                                </div>
+                                
+                                <!-- enviar -->
+                                <imput type="submit" class="btn" value="Enviar" />
+                            </form>
+                        </div>
+                        <div class="contenedor-info">
+                            <ul>
+                                <li>
+                                    <a href="tel:+34943001002">
+                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <span>+34 943 001 002</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:info@panaderia.com" target="_blank">
+                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <span>info@panaderia.com</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/677001002" target="_blank">
+                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <span>677001001</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank">
+                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <span><strong>Área Escuela de Diseño y Nuevas Tecnologías</strong><br>C/ Juan Fermín, Juan F. Gilisagasti Kalea, 4, 1º<br>20018 Donostia / San Sebastián<br>Gipuzkoa</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46473.427156890815!2d-1.9325749123229952!3d43.280981418388954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51b013f0513629%3A0x57e4ff3311f619d9!2s%C3%81rea%20Escuela%20de%20Dise%C3%B1o%20y%20Nuevas%20Tecnolog%C3%ADas!5e0!3m2!1ses!2ses!4v1768585015247!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
                 </article>
             </section>
         </main>

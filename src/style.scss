@@ -5,11 +5,15 @@
 @use './resources/_art004.scss';
 @use './resources/_art005.scss';
 @use './resources/_art006.scss';
+@use './resources/_artform01.scss';
 
 
 // Modificar un recurso existente importado (art003)
 .art003{
     width: 80%;
+     @media only screen and (min-width: c.$tablet){
+        width: 60%;
+    }
     background-color: c.$color-oscuro;
     p, >:nth-child(1){
         color: c.$color-claro;
