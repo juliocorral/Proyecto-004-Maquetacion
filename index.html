@@ -277,61 +277,63 @@
                         <div class="contenedor-form">
                             <form action="#" method="post">
                                 <!-- nombre -->
-                                <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" minlength="3" maxlength="30" required />
+                                <label for="nombre">Nombre *</label>
+                                <input type="text" name="nombre" id="nombre" minlength="3" maxlength="30" placeholder="Introduce nombre y apellido" required />
                                 
                                 <!-- teléfono -->
-                                <label for="telefono">Teléfono</label>
-                                <input type="tel" name="telefono" id="telefono" />
+                                <label for="telefono">Teléfono *</label>
+                                <input type="tel" name="telefono" id="telefono" placeholder="Introduce nº móvil" required />
                                 
                                 <!-- email -->
                                 <label for="email">Correo electrónico</label>
-                                <input type="email" name="email" id="email" required />
+                                <input type="email" name="email" id="email" placeholder="Introduce email" />
                                 
                                 <!-- mensaje -->
-                                <label for="mensaje">Mensaje</label>
-                                <textarea name="mensaje" id="mensaje" rows="7" required></textarea>
+                                <label for="mensaje">Mensaje *</label>
+                                <textarea name="mensaje" id="mensaje" rows="7" placeholder="Introduce comentario" required></textarea>
                                 
                                 <!-- aceptar términos -->
-                                <label for="aceptar">Aceptar términos y condiciones de privacidad</label>
-                                <input type="checkbox" name="aceptar" id="aceptar" />
+                                 <div class="horizontal">
+                                    <label for="aceptar">Aceptar términos y condiciones de privacidad *</label>
+                                    <input type="checkbox" name="aceptar" id="aceptar" required />
+                                </div>
                                 
                                 <!-- captcha -->
                                 <label for="captcha">Resuelve</label>
-                                <div class="captcha">
+                                <div class="horizontal">
                                     <span id="num1">3</span>
                                     <span>+</span>
                                     <span id="num2">8</span>
-                                    <input type="text" name="respuesta" id="respuesta" required />
+                                    <input type="text" name="respuesta" placeholder="Respuesta" id="respuesta" required />
                                 </div>
                                 
                                 <!-- enviar -->
-                                <imput type="submit" class="btn" value="Enviar" />
+                                <input type="submit" value="Enviar" class="btn-enviar" />
                             </form>
                         </div>
                         <div class="contenedor-info">
                             <ul>
                                 <li>
                                     <a href="tel:+34943001002">
-                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <img src="./src/resources/telefono.svg" alt="" title="" />
                                         <span>+34 943 001 002</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:info@panaderia.com" target="_blank">
-                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <img src="./src/resources/mail.svg" alt="" title="" />
                                         <span>info@panaderia.com</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://wa.me/677001002" target="_blank">
-                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                        <img src="./src/resources/whatsapp.svg" alt="" title="" />
                                         <span>677001001</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank">
-                                        <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank" >
+                                        <img src="./src/resources/map.svg" alt="" title="" class="icono-mapa" />
                                         <span><strong>Área Escuela de Diseño y Nuevas Tecnologías</strong><br>C/ Juan Fermín, Juan F. Gilisagasti Kalea, 4, 1º<br>20018 Donostia / San Sebastián<br>Gipuzkoa</span>
                                     </a>
                                 </li>

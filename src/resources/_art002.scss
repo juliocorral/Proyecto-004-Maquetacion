@@ -100,7 +100,7 @@
                     img{
                         width: 20px;
                         transition: 0.2s ease-in-out;
-                        filter: invert(14%) sepia(42%) saturate(788%) hue-rotate(14deg) brightness(92%) contrast(97%);
+                        filter: c.$colorSVG;
                         @media only screen and (min-width: c.$tablet){
                             width: 25px;
                         }

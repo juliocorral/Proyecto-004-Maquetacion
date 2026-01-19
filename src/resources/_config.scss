@@ -14,6 +14,7 @@
     font-family: 'Inter';
     src: url('./Inter-VariableFont_wght.ttf');
 }
+$tamanoFuente: clamp(1rem, 3vw, 1.1rem);
 
 // Variables de colores, fuentes y breakpoints
 $color-primary: #f7eddb;
@@ -21,6 +22,7 @@ $color-secondary: #a8a484;
 $color-oscuro: #090909;
 $color-claro: #e0e0e0;
 $color-sombra: rgba(20, 20, 20, 0.5);
+$colorSVG: invert(14%) sepia(42%) saturate(788%) hue-rotate(14deg) brightness(92%) contrast(97%);
 
 $fuenteTitulos: 'Geom', sans-serif;
 $fuenteTexto: 'Inter', sans-serif;
