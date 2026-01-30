@@ -89,33 +89,64 @@ if (!empty($errores)) {
     exit;
 }
 
-// 3.- Enviar una respuesta al usuario
+// 3.- Enviar una respuesta al la empresa y al usuario
 //header('location:/gracias.php?nombre=' . urlencode($nombre));
 
-// 4.- Enviar un correo electrónico con los datos del formulario
+// 3.1.- Enviar un correo electrónico con los datos del formulario a la empresa
+$urlWeb='https://localhost:3000';
 $correoEmisor = $_ENV['EMAIL_WEB']; // correo del remitente (de la web)
 $nombreEmisor = 'Web Panadería'; // nombre del remitente (de la web)
 $correoDestinatario = $_ENV['EMAIL_ADMIN']; // correo del destinatario (administrador)
 $nombreDestinatario = 'Julio Corral'; // nombre del destinatario (administrador)
-$asunto = 'Nuevo mensaje desde el formulario de contacto de' . $nombre;
-$cuerpo = '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>'.$asunto.'</title>
-</head>
-<body>
-    <h2>Nuevo mensaje recibido desde el formulario de contacto</h2>
-    <p><strong>Nombre:</strong> ' . htmlspecialchars($nombre) . '</p>
-    <p><strong>Teléfono:</strong> ' . htmlspecialchars($telefono) . '</p>
-    <p><strong>Correo electrónico:</strong> ' . htmlspecialchars($email) . '</p>
-    <p><strong>Mensaje:</strong><br>' . nl2br(htmlspecialchars($mensaje)) . '</p>
-</body>
-</html>';
+$asunto = 'Nuevo mensaje desde el formulario de contacto de ' . $nombre;
 
-$aviso = "<p>Se ha enviado un nuevo mensje desde el formulario de contacto.</p>";
+$cuerpo = file_get_contents('./templates/artform01.html');
+
+$vars = [
+    '{encabezado}' => 'Nuevo mensaje de contacto',
+    '{texto_cabecera}' => 'Se ha recibido un nuevo mensaje con los siguientes datos:',    
+    '{nombre}' => htmlspecialchars($nombre),  
+    '{telefono}' => htmlspecialchars($telefono),
+    '{email}' =>  htmlspecialchars($email),
+    '{mensaje}' => nl2br(htmlspecialchars($mensaje)),
+    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. Responde directamente al remitente si necesitas contactarlo.'
+];
+
+$cuerpo = str_replace(array_keys($vars), array_values($vars), $cuerpo);
+
+// Para ver como llegaría el email
+// echo $cuerpo; exit;
+
+$aviso = '<p>Se ha enviado un nuevo mensaje desde el formulario de contacto.</p>';
+
+include './envioPhpMailer.php';
+
+// 3.2.- Enviar un correo electrónico al usuario confirmando la recepción del mensaje
+$urlWeb='https://localhost:3000';
+$correoEmisor = $_ENV['EMAIL_WEB']; // correo del remitente (de la web)
+$nombreEmisor = 'Web Panadería'; // nombre del remitente (de la web)
+$correoDestinatario = $email; // correo del destinatario (administrador)
+$nombreDestinatario = $nombre; // nombre del destinatario (administrador)
+$asunto = $nombre . 'Mensaje recibido'; 
+
+$cuerpo = file_get_contents('./templates/artform01.html');
+
+$vars = [
+    '{encabezado}' => 'Solicitud recibida',
+    '{texto_cabecera}' => 'Se ha recibido su mensaje con los siguientes datos:',    
+    '{nombre}' => htmlspecialchars($nombre),  
+    '{telefono}' => htmlspecialchars($telefono),
+    '{email}' =>  htmlspecialchars($email),
+    '{mensaje}' => nl2br(htmlspecialchars($mensaje)),
+    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. En breve recibirás una respuesta.'
+];
+
+$cuerpo = str_replace(array_keys($vars), array_values($vars), $cuerpo);
+
+// Para ver como llegaría el email
+// echo $cuerpo; exit;
+
+$aviso = '<p>Se ha enviado un nuevo mensaje desde el formulario de contacto.</p>';
 
 include './envioPhpMailer.php';
 ?>
