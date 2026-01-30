@@ -11,7 +11,7 @@ let numero1 = (Number)(Math.floor(Math.random() * 10))
 let numero2 = (Number)(Math.floor(Math.random() * 10))
 
 // Conseguir un número aleatorio del 1 al 4
-let numOperacion = (Number)(Math.floor(Math.random() * 4) + 1)
+let numOperacion = (Number)(Math.floor(Math.random() * 3) + 1)
 console.log("Operación: " + numOperacion)
 
 // Según la operación, asigno los números y calculo el resultado
@@ -34,6 +34,7 @@ switch (numOperacion) {
         simbolo = "*"
         resultado = numero1 * numero2
         break
+    /*
     case 4: // División
         console.log("Operación: División")  
         simbolo = "/"   
@@ -43,6 +44,7 @@ switch (numOperacion) {
         }
         resultado = Math.floor(numero1 / numero2) // División entera
         break
+    */
     default: // Suma
         console.log("Operación: Suma")
         simbolo = "+"
