@@ -1,4 +1,9 @@
 <?php
+require_once '../vendor/autoload.php'; 
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable('../');
+$dotenv->load();
+
 //Incluir recursos
 include_once '../config/helpers.php';
 
@@ -32,11 +37,13 @@ if (comprobarVacio($telefono)) {
     die;
 }
 //if (!preg_match('/^[0-9]{9}$/', $telefono)) {
+/*
 if (!preg_match("/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/", $telefono)) {
     $errores[] = "El teléfono no tiene un formato válido.";
     header('location:/?error=telefonoFormato');
     die;
 }
+*/
 
 if (comprobarVacio($email)) {
     $errores[] = "El correo electrónico es obligatorio.";
@@ -91,14 +98,24 @@ $nombreEmisor = 'Web Panadería'; // nombre del remitente (de la web)
 $correoDestinatario = $_ENV['EMAIL_ADMIN']; // correo del destinatario (administrador)
 $nombreDestinatario = 'Julio Corral'; // nombre del destinatario (administrador)
 $asunto = 'Nuevo mensaje desde el formulario de contacto de' . $nombre;
-$cuerpo = "<h2>Nuevo mensaje recibido desde el formulario de contacto</h2>
-<p><strong>Nombre:</strong> " . htmlspecialchars($nombre) . "</p>
-<p><strong>Teléfono:</strong> " . htmlspecialchars($telefono) . "</p>
-<p><strong>Correo electrónico:</strong> " . htmlspecialchars($email) . "</p>
-<p><strong>Mensaje:</strong><br>" . nl2br(htmlspecialchars($mensaje)) . "</p>
-";
-$aviso = "<p>Se ha enviado un nuevo mensaje desde el formulario de contacto.</p>";
+$cuerpo = '
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'.$asunto.'</title>
+</head>
+<body>
+    <h2>Nuevo mensaje recibido desde el formulario de contacto</h2>
+    <p><strong>Nombre:</strong> ' . htmlspecialchars($nombre) . '</p>
+    <p><strong>Teléfono:</strong> ' . htmlspecialchars($telefono) . '</p>
+    <p><strong>Correo electrónico:</strong> ' . htmlspecialchars($email) . '</p>
+    <p><strong>Mensaje:</strong><br>' . nl2br(htmlspecialchars($mensaje)) . '</p>
+</body>
+</html>';
 
-include_once './App/envioPhpMailer.php';
+$aviso = "<p>Se ha enviado un nuevo mensje desde el formulario de contacto.</p>";
 
+include './envioPhpMailer.php';
 ?>
