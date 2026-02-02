@@ -18,6 +18,9 @@ $aceptar = isset($_POST['aceptar']) ? true : false;
 $respUser = $_POST['respuesta'];
 $respSystem = $_POST['respSystem'];
 
+$ip = $_SERVER['REMOTE_ADDR'];
+$fecha = date('Y-m-d H:i:s');
+
 // 2.- Validar los datos
 $errores = [];
 if (comprobarVacio($nombre)) {
@@ -90,7 +93,6 @@ if (!empty($errores)) {
 }
 
 // 3.- Enviar una respuesta al la empresa y al usuario
-//header('location:/gracias.php?nombre=' . urlencode($nombre));
 
 // 3.1.- Enviar un correo electrónico con los datos del formulario a la empresa
 $urlWeb='https://localhost:3000';
@@ -100,7 +102,7 @@ $correoDestinatario = $_ENV['EMAIL_ADMIN']; // correo del destinatario (administ
 $nombreDestinatario = 'Julio Corral'; // nombre del destinatario (administrador)
 $asunto = 'Nuevo mensaje desde el formulario de contacto de ' . $nombre;
 
-$cuerpo = file_get_contents('./templates/artform01.html');
+$html = file_get_contents('./templates/artform01.html');
 
 $vars = [
     '{encabezado}' => 'Nuevo mensaje de contacto',
@@ -109,15 +111,15 @@ $vars = [
     '{telefono}' => htmlspecialchars($telefono),
     '{email}' =>  htmlspecialchars($email),
     '{mensaje}' => nl2br(htmlspecialchars($mensaje)),
-    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. Responde directamente al remitente si necesitas contactarlo.'
+    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. Responde directamente al remitente si necesitas contactarlo.',
+    '{ip}' => $ip,
+    '{fecha}' => $fecha
 ];
 
-$cuerpo = str_replace(array_keys($vars), array_values($vars), $cuerpo);
+$cuerpo = str_replace(array_keys($vars), array_values($vars), $html);
 
 // Para ver como llegaría el email
-// echo $cuerpo; exit;
-
-$aviso = '<p>Se ha enviado un nuevo mensaje desde el formulario de contacto.</p>';
+// echo $cuerpo; die;
 
 include './envioPhpMailer.php';
 
@@ -129,7 +131,7 @@ $correoDestinatario = $email; // correo del destinatario (administrador)
 $nombreDestinatario = $nombre; // nombre del destinatario (administrador)
 $asunto = $nombre . 'Mensaje recibido'; 
 
-$cuerpo = file_get_contents('./templates/artform01.html');
+$html = file_get_contents('./templates/artform01.html');
 
 $vars = [
     '{encabezado}' => 'Solicitud recibida',
@@ -138,15 +140,45 @@ $vars = [
     '{telefono}' => htmlspecialchars($telefono),
     '{email}' =>  htmlspecialchars($email),
     '{mensaje}' => nl2br(htmlspecialchars($mensaje)),
-    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. En breve recibirás una respuesta.'
+    '{texto_pie}' => 'Este mensaje se generó automáticamente desde el sitio web. En breve recibirás una respuesta.',
+    '{ip}' => $ip,
+    '{fecha}' => $fecha
 ];
 
-$cuerpo = str_replace(array_keys($vars), array_values($vars), $cuerpo);
+$cuerpo = str_replace(array_keys($vars), array_values($vars), $html);
 
 // Para ver como llegaría el email
-// echo $cuerpo; exit;
-
-$aviso = '<p>Se ha enviado un nuevo mensaje desde el formulario de contacto.</p>';
+// echo $cuerpo; die;
 
 include './envioPhpMailer.php';
+
+// 4.- Guardar los datos en la base de datos.
+
+// 4.1 - Conectar con la base de datos
+$con = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
+
+// 4.2 - Comprobar la conexión
+if (!$con) {
+    error_log("Error al conectar con la base de datos: " . mysqli_connect_error());
+} else {
+    // 4.3 - Insertar los datos en la tabla correspondiente
+    $con->set_charset("utf8mb4");
+    $sql = "INSERT INTO consultas (nombre, telefono, email, mensaje, ip, fecha) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($con, $sql);
+
+    if (!$stmt) {
+        error_log("Error al preparar la consulta: " . mysqli_error($con));
+    } else {    
+        mysqli_stmt_bind_param($stmt, "ssssss", $nombre, $telefono, $email, $mensaje, $ip, $fecha);
+        if (!mysqli_stmt_execute($stmt)) {
+            error_log("Error al insertar los datos: " . mysqli_stmt_error($stmt));
+        }
+        mysqli_stmt_close($stmt);
+    }
+    // 4.4 - Cerrar la conexión
+    mysqli_close($con);
+}
+
+// 5.- Redirigir a una página de gracias
+header('location:/gracias.php?nombre=' . urlencode($nombre));
 ?>
