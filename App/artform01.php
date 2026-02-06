@@ -25,62 +25,62 @@ $fecha = date('Y-m-d H:i:s');
 $errores = [];
 if (comprobarVacio($nombre)) {
     $errores[] = "El nombre es obligatorio.";
-    header('location:/?error=nombreVacio');
+    header("location:/index.php?error=vacio&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 if (comprobarCaracteres($nombre, 3, 30)) {
     $errores[] = "El nombre debe tener entre 3 y 30 caracteres.";
-    header('location:/?error=nombreCorto');
+    header("location:/index.php?error=corto&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 
 if (comprobarVacio($telefono)) {
     $errores[] = "El teléfono es obligatorio.";
-    header('location:/?error=telefonoVacio');
+    header("location:/index.php?error=vacio&campo=telefono&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 //if (!preg_match('/^[0-9]{9}$/', $telefono)) {
 /*
 if (!preg_match("/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/", $telefono)) {
     $errores[] = "El teléfono no tiene un formato válido.";
-    header('location:/?error=telefonoFormato');
+    header('location:/index.php?error=telefonoFormato');
     die;
 }
 */
 
 if (comprobarVacio($email)) {
     $errores[] = "El correo electrónico es obligatorio.";
-    header('location:/?error=emailVacio');
+    header("location:/index.php?error=vacio&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 if (!comprobarEmail($email)) {
     $errores[] = "El correo electrónico no tiene un formato válido.";
-    header('location:/?error=emailFormato');
+    header("location:/index.php?error=formato&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 /*
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errores[] = "El correo electrónico no es válido.";
-    header('location:/?error=email');
+    header('location:/index.php?error=email');
     die;
 }
 */
 
 if (comprobarCaracteres($mensaje, 10, 200)) {
     $errores[] = "El mensaje debe tener entre 10 y 200 caracteres.";
-    header('location:/?error=mensajeCorto');
+    header("location:/index.php?error=corto&campo=mensaje&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 
 if (!$aceptar) {
     $errores[] = "Debes aceptar los términos y condiciones.";
-    header('location:/?error=condiciones');
+    header("location:/index.php?error=aceptar&campo=condiciones&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 
 if ($respUser !== $respSystem || empty($respUser)) {
     $errores[] = "La respuesta a la pregunta de seguridad es incorrecta.";
-    header('location:/?error=captcha');
+    header("location:/index.php?error=error&campo=captcha&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
     die;
 }
 

@@ -272,25 +272,45 @@
                 <h2>(h2) Contacto</h2>
 
                 <article class="artform01">
+                    <?php
+                    // Comprobar si hay variables en la URL
+                    // Si hay un variables de error en la URL, mostrar mensaje de error encima del input del tipo de error
+                    if (isset($_GET['error'])) {
+                        $error = htmlspecialchars($_GET['error']);
+                        $campo = isset($_GET['campo']) ? htmlspecialchars($_GET['campo']) : '';
+
+                        $nombre = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre']) : '';
+                        $telefono = isset($_GET['telefono']) ? htmlspecialchars($_GET['telefono']) : '';
+                        $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';  
+                        $mensaje = isset($_GET['mensaje']) ? nl2br(htmlspecialchars($_GET['mensaje'])) : '';   
+                    }
+                    ?>
+
                     <h3>(h3) Solicitar información</h3>
                     <div>
                         <div class="contenedor-form">
                             <form action="/App/artform01.php" method="post">
+                                <?php
+                                if (isset($error)) { ?>
+                                    <p class="error">Error en el campo: <?=$campo?> de tipo: <?=$error?></p>
+                                <?php }
+                                ?>
+
                                 <!-- nombre -->
                                 <label for="nombre">Nombre *</label>
-                                <input type="text" name="nombre" id="nombre" minlength="3" maxlength="30" placeholder="Introduce nombre y apellido" required />
+                                <input type="text" name="nombre" id="nombre" minlength="3" maxlength="30" placeholder="Introduce nombre y apellido" value="<?=$nombre?>" required />
                                 
                                 <!-- teléfono -->
                                 <label for="telefono">Teléfono *</label>
-                                <input type="tel" name="telefono" id="telefono" placeholder="Introduce nº móvil" required />
+                                <input type="tel" name="telefono" id="telefono" placeholder="Introduce nº móvil" value="<?=$telefono?>" required />
                                 
                                 <!-- email -->
                                 <label for="email">Correo electrónico</label>
-                                <input type="email" name="email" id="email" placeholder="Introduce email" />
+                                <input type="email" name="email" id="email" placeholder="Introduce email" value="<?=$email?>" />
                                 
                                 <!-- mensaje -->
                                 <label for="mensaje">Mensaje *</label>
-                                <textarea name="mensaje" id="mensaje" rows="7" placeholder="Introduce comentario" required></textarea>
+                                <textarea name="mensaje" id="mensaje" rows="7" placeholder="Introduce comentario" required><?=$mensaje?></textarea>
                                 
                                 <!-- aceptar términos -->
                                  <div class="horizontal">

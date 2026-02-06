@@ -10,8 +10,13 @@ export default defineConfig({
         changeOrigin: true,
       },
       // Agregar proxy para archivos PHP en la raíz (como gracias.php)
+      '/index.php': {
+        target: 'http://localhost:8000', 
+        changeOrigin: true,
+      },
+      // Agregar proxy para archivos PHP en la raíz (como gracias.php)
       '/gracias.php': {
-        target: 'http://localhost:8000', // Cambia a 'http://localhost' si tu servidor PHP está en XAMPP (puerto 80)
+        target: 'http://localhost:8000', 
         changeOrigin: true,
       },
     },
