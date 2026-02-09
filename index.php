@@ -268,8 +268,9 @@
             </section>
 
             <!-- Contacto -->
-            <section>
-                <h2>(h2) Contacto</h2>
+            <!-- Formulario con envío por PHP -->
+            <section id="artform01">
+                <h2>(h2) Contacto envío PHPMailer</h2>
 
                 <article class="artform01">
                     <?php
@@ -277,19 +278,19 @@
                     // Si hay un variables de error en la URL, mostrar mensaje de error encima del input del tipo de error
                     if (isset($_GET['error'])) {
                         $error = htmlspecialchars($_GET['error']);
-                        $campo = isset($_GET['campo']) ? htmlspecialchars($_GET['campo']) : '';
-
-                        $nombre = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre']) : '';
-                        $telefono = isset($_GET['telefono']) ? htmlspecialchars($_GET['telefono']) : '';
-                        $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';  
-                        $mensaje = isset($_GET['mensaje']) ? nl2br(htmlspecialchars($_GET['mensaje'])) : '';   
+                        $campo = isset($_GET['campo']) ? htmlspecialchars($_GET['campo']) : '';  
                     }
+
+                    $nombre = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre']) : '';
+                    $telefono = isset($_GET['telefono']) ? htmlspecialchars($_GET['telefono']) : '';
+                    $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';  
+                    $mensaje = isset($_GET['mensaje']) ? nl2br(htmlspecialchars($_GET['mensaje'])) : ''; 
                     ?>
 
                     <h3>(h3) Solicitar información</h3>
                     <div>
                         <div class="contenedor-form">
-                            <form action="/App/artform01.php" method="post">
+                            <form action="/App/artform01.php" method="post" id="idForm">
                                 <?php
                                 if (isset($error)) { ?>
                                     <p class="error">Error en el campo: <?=$campo?> de tipo: <?=$error?></p>
@@ -313,7 +314,7 @@
                                 <textarea name="mensaje" id="mensaje" rows="7" placeholder="Introduce comentario" required><?=$mensaje?></textarea>
                                 
                                 <!-- aceptar términos -->
-                                 <div class="horizontal">
+                                <div class="horizontal">
                                     <label for="aceptar">Aceptar términos y condiciones de privacidad *</label>
                                     <input type="checkbox" name="aceptar" id="aceptar" />
                                 </div>
@@ -331,6 +332,92 @@
                                 
                                 <!-- enviar -->
                                 <input type="submit" value="Enviar" class="btn-enviar" />
+                            </form>
+                        </div>
+
+                        <div class="contenedor-info">
+                            <ul>
+                                <li>
+                                    <a href="tel:+34943001002">
+                                        <img src="./src/resources/telefono.svg" alt="" title="" />
+                                        <span>+34 943 001 002</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:info@panaderia.com" target="_blank">
+                                        <img src="./src/resources/mail.svg" alt="" title="" />
+                                        <span>info@panaderia.com</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/677001002" target="_blank">
+                                        <img src="./src/resources/whatsapp.svg" alt="" title="" />
+                                        <span>677001001</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank" >
+                                        <img src="./src/resources/map.svg" alt="" title="" class="icono-mapa" />
+                                        <span><strong>Área Escuela de Diseño y Nuevas Tecnologías</strong><br>C/ Juan Fermín, Juan F. Gilisagasti Kalea, 4, 1º<br>20018 Donostia / San Sebastián<br>Gipuzkoa</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46473.427156890815!2d-1.9325749123229952!3d43.280981418388954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51b013f0513629%3A0x57e4ff3311f619d9!2s%C3%81rea%20Escuela%20de%20Dise%C3%B1o%20y%20Nuevas%20Tecnolog%C3%ADas!5e0!3m2!1ses!2ses!4v1768585015247!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            
+            <!-- Formulario con envío por XMLHTTPRequest (Ajax) -->
+            <section id="artform02">
+                <h2>(h2) Contacto envio XMLHTTPRequest</h2>
+
+                <article class="artform02">
+
+                    <h3>(h3) Solicitar información</h3>
+                    <div>
+                        <div class="contenedor-form">
+
+                            <div id="mensajeGraciasAjax"></div>
+
+                            <form id="idFormAjax">
+                                <p class="error" id="errorAjax"></p>
+
+                                <!-- nombre -->
+                                <label for="nombreAjax">Nombre *</label>
+                                <input type="text" name="nombre" id="nombreAjax" minlength="3" maxlength="30" placeholder="Introduce nombre y apellido" />
+                                
+                                <!-- teléfono -->
+                                <label for="telefonoAjax">Teléfono *</label>
+                                <input type="tel" name="telefono" id="telefonoAjax" placeholder="Introduce nº móvil" />
+                                
+                                <!-- email -->
+                                <label for="emailAjax">Correo electrónico</label>
+                                <input type="email" name="email" id="emailAjax" placeholder="Introduce email" />
+                                
+                                <!-- mensaje -->
+                                <label for="mensajeAjax">Mensaje *</label>
+                                <textarea name="mensaje" id="mensajeAjax" rows="7" placeholder="Introduce comentario"></textarea>
+                                
+                                <!-- aceptar términos -->
+                                 <div class="horizontal">
+                                    <label for="aceptarAjax">Aceptar términos y condiciones de privacidad *</label>
+                                    <input type="checkbox" name="aceptar" id="aceptarAjax" />
+                                </div>
+                                
+                                <!-- captcha -->
+                                <label for="captchaAjax">Resuelve</label>
+                                <div class="horizontal">
+                                    <span id="num1Ajax">3</span>
+                                    <span id="operacionAjax">+</span>
+                                    <span id="num2Ajax">8</span>
+                                    <input type="text" name="respuesta" placeholder="Respuesta" id="respuestaAjax" />
+                                    <!-- Respuesta calculada OCULTA -->
+                                    <input type="hidden" name="respSystem" id="respSystemAjax" value="" />
+                                </div>
+                                
+                                <!-- enviar -->
+                                <input type="submit" value="Enviar" class="btn-enviar" id="btnEnviarAjax" />
                             </form>
                         </div>
                         <div class="contenedor-info">

@@ -25,18 +25,18 @@ $fecha = date('Y-m-d H:i:s');
 $errores = [];
 if (comprobarVacio($nombre)) {
     $errores[] = "El nombre es obligatorio.";
-    header("location:/index.php?error=vacio&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=vacio&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 if (comprobarCaracteres($nombre, 3, 30)) {
     $errores[] = "El nombre debe tener entre 3 y 30 caracteres.";
-    header("location:/index.php?error=corto&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=corto&campo=nombre&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 
 if (comprobarVacio($telefono)) {
     $errores[] = "El teléfono es obligatorio.";
-    header("location:/index.php?error=vacio&campo=telefono&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=vacio&campo=telefono&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 //if (!preg_match('/^[0-9]{9}$/', $telefono)) {
@@ -50,12 +50,12 @@ if (!preg_match("/(\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}/", $telefono
 
 if (comprobarVacio($email)) {
     $errores[] = "El correo electrónico es obligatorio.";
-    header("location:/index.php?error=vacio&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=vacio&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 if (!comprobarEmail($email)) {
     $errores[] = "El correo electrónico no tiene un formato válido.";
-    header("location:/index.php?error=formato&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=formato&campo=email&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 /*
@@ -68,19 +68,19 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 if (comprobarCaracteres($mensaje, 10, 200)) {
     $errores[] = "El mensaje debe tener entre 10 y 200 caracteres.";
-    header("location:/index.php?error=corto&campo=mensaje&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=corto&campo=mensaje&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 
 if (!$aceptar) {
     $errores[] = "Debes aceptar los términos y condiciones.";
-    header("location:/index.php?error=aceptar&campo=condiciones&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=aceptar&campo=condiciones&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 
 if ($respUser !== $respSystem || empty($respUser)) {
     $errores[] = "La respuesta a la pregunta de seguridad es incorrecta.";
-    header("location:/index.php?error=error&campo=captcha&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje");
+    header("location:/index.php?error=error&campo=captcha&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
 }
 
@@ -180,5 +180,5 @@ if (!$con) {
 }
 
 // 5.- Redirigir a una página de gracias
-header('location:/gracias.php?nombre=' . urlencode($nombre));
+header('location:/index.php?nombre=' . urlencode($nombre) . '#artform01');
 ?>
