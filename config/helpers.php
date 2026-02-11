@@ -16,4 +16,15 @@ function comprobarEmail($campo) {
     $regexpEmail = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     return preg_match($regexpEmail, $campo);
 }
+
+function enviarError($mensajeError, $campo) {
+    $arrayRespuesta = array(
+        "fallo" => true,
+        "mensaje" => $mensajeError,
+        "campo" => $campo
+    );
+
+    echo json_encode($arrayRespuesta);
+    die;
+}
 ?>

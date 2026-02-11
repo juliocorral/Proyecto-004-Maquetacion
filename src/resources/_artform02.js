@@ -64,21 +64,29 @@ num2.textContent = numero2
 respSystem.value = resultado
 
 
-// 2.- Al pulsar el botón "enviar" del formulario 02 envíamos los valores por Ajax al servidor y esperamos su respuesta
+// 2.- Al pulsar el botón "enviar" del formulario 02 envíamos los valores por Ajax o por FETCH API al servidor y esperamos su respuesta
 // Si la respuesta es correcta, muestra un mensaje de éxito, si no, muestra un mensaje de error.
 
 // 2.1 Recogemos los elementos del formulario
 
-const formulario = document.getElementById('idFormAjax')
-const btnEnviarAjax = document.getElementById('btnEnviarAjax')
-const mensajeGraciasAjax = document.getElementById('mensajeGraciasAjax')
-const errorAjax = document.getElementById('errorAjax')
+const formulario = document.querySelector('#idFormAjax')
+const btnEnviarAjax = document.querySelector('#btnEnviarAjax')
+const inputs = formulario.querySelectorAll('input, textarea')
+
+const mensajeGraciasAjax = document.querySelector('#mensajeGraciasAjax')
+const errorAjax = document.querySelector('#errorAjax')
+const loader = document.querySelector('#moduleloader01')
 
 formulario.addEventListener('submit', function(event) {
     event.preventDefault() // Evito que el formulario se envíe de manera automática
     const camposFormulario = new FormData(document.forms.namedItem("idFormAjax")) // Recogo los datos del formulario
 
+    // *******************
+    // OPCION 1: Enviar los datos mediante XMLHttpRequest (más tradicional)
+    // *******************
+
     // construimos el objeto de clase XMLHttpRequest para enviar los datos al servidor
+    /*
     const xmlhttp = new XMLHttpRequest()
     xmlhttp.onload = function() {
         if (this.status === 200) {
@@ -109,10 +117,100 @@ formulario.addEventListener('submit', function(event) {
     // Envío los datos al servidor (index.php) mediante POST
     xmlhttp.open("POST", "/App/artform02.php", true)
     xmlhttp.send(camposFormulario)
+    */
 
-    // Aquí podriamos realizar alguna acción adicional mientras esperamos la respuesta del servidor
-    // como mostrar un loader de carga o deshabilitar el botón de enviar para evitar múltiples envíos.
+    // *******************
+    // OPCION 2: Enviar los datos mediante FETCH API (más moderno y sencillo que XMLHttpRequest)
+    // *******************
+
+    // Solución IGOR: (Profesor)
+    /*
+    fetch("/App/artForm02.php", { method: "POST", body: camposFormulario })
+    .then(async (res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+ 
+        const texto = await res.text()
+        console.log(texto)              // equivalente a xmlhttp.responseText
+ 
+        return JSON.parse(texto)        // equivalente a JSON.parse(xmlhttp.responseText)
+    })
+    .then(({ mensaje, fallo, campo }) => {
+ 
+        // quitaría el loader
+ 
+        // lógica una vez se recibe con éxito la respuesta y los valores
+        if (fallo === true) {
+            errorForm02.innerText = mensaje
+        } else {
+            formulario.style.display = "none"
+            h3Form02.innerText = mensaje
+        }
+    })
+    .catch((err) => {
+ 
+        // quitaría el loader
+ 
+        console.error(err)
+        errorForm02.innerText = "Ha ocurrido un error al enviar el formulario."
+    })
+    */ 
 
 
-    
-}) 
+    fetch('/App/artform02.php', {
+        method: 'POST',
+        body: camposFormulario
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Ocultamos el loader de carga, quitamos el blur del formulario.
+        // Habilitamos el botón de enviar y los campos del formulario
+        loader.style.display = "none"
+        formulario.style.filter = "blur(0px)" 
+        btnEnviarAjax.style.pointerEvents = "initial" 
+        
+        inputs.forEach(el => {
+            el.disabled = false
+        })
+
+        console.log(data)
+        var mensaje = data.mensaje
+        var fallo = data.fallo
+
+        if (fallo) {
+            console.log("Error: " + mensaje)
+            errorAjax.innerHTML = mensaje
+            mensajeGraciasAjax.innerText = ""
+        } else {
+            console.log("Éxito: " + mensaje)
+            mensajeGraciasAjax.innerHTML = mensaje
+            errorAjax.innerText = ""
+            formulario.style.display = "none" // Oculto el formulario
+        }
+    })
+    .catch(error => {
+        // Ocultamos el loader de carga, quitamos el blur del formulario.
+        // Habilitamos el botón de enviar y los campos del formulario
+        loader.style.display = "none"
+        formulario.style.filter = "blur(0px)"
+        btnEnviarAjax.style.pointerEvents = "initial"
+
+        inputs.forEach(el => {
+            el.disabled = false
+        })
+
+
+        console.log("Error en la comunicación con el servidor: " + error)
+        errorAjax.innerHTML = "Error en la comunicación con el servidor. Por favor, inténtalo de nuevo más tarde."
+    })
+
+    // Aquí podríamos realizar alguna acción adicional mientras esperamos la respuesta del servidor
+    // Mostramos un loader de carga, hacemos un blur del formulario.
+    // Deshabilitamos el botón de enviar, y deshabilitamos los campos del formulario
+    loader.style.display = "initial"
+    formulario.style.filter = "blur(2px)" 
+    btnEnviarAjax.style.pointerEvents = "none"
+
+    inputs.forEach(el => {
+        el.disabled = true
+    })
+})
