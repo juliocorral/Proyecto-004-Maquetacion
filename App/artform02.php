@@ -19,8 +19,7 @@ $respUser = $_POST['respuesta'];
 $respSystem = $_POST['respSystem'];
 
 // Prueba ÉXITO
-$mensajeResultado = "<h3>¡Gracias por contactar con nosotros!</h3>
-                    <p>Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible.</p>";
+$mensajeResultado = "Hemos recibido tu mensaje <strong>$nombre</strong>.<br> pondremos en contacto contigo lo antes posible.";
 $campo = "";
 
 $ip = $_SERVER['REMOTE_ADDR'];

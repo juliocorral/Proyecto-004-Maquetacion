@@ -7,76 +7,45 @@ console.log('Proyecto 004 - Maquetación (formulario)')
 const num1 = document.getElementById('num1Ajax')
 const operacion = document.getElementById('operacionAjax')
 const num2 = document.getElementById('num2Ajax')
-const respSystem = document.getElementById('respSystemAjax')
+const respSystemAjax = document.getElementById('respSystemAjax')
 
-// Calculo los dos números random (entre 1 y 10) y los asigno a los elementos y hago la suma (me aseguro que los valores sean Number)
-let numero1 = (Number)(Math.floor(Math.random() * 10))
-let numero2 = (Number)(Math.floor(Math.random() * 10))
-
-// Conseguir un número aleatorio del 1 al 4
-let numOperacion = (Number)(Math.floor(Math.random() * 3) + 1)
-console.log("Operación: " + numOperacion)
-
-// Según la operación, asigno los números y calculo el resultado
-let resultado = 0
-let simbolo = ""
-
-switch (numOperacion) {
-    case 1: // Suma
-        console.log("Operación: Suma")
-        simbolo = "+"
-        resultado = numero1 + numero2
-        break
-    case 2: // Resta
-        console.log("Operación: Resta")
-        simbolo = "-"
-        resultado = numero1 - numero2
-        break
-    case 3: // Multiplicación
-        console.log("Operación: Multiplicación")    
-        simbolo = "*"
-        resultado = numero1 * numero2
-        break
-    /*
-    case 4: // División
-        console.log("Operación: División")  
-        simbolo = "/"   
-        // Me aseguro de evitar divisiones por cero
-        if (numero2 === 0) {
-            numero2 = 1
-        }
-        resultado = Math.floor(numero1 / numero2) // División entera
-        break
-    */
-    default: // Suma
-        console.log("Operación: Suma")
-        simbolo = "+"
-        resultado = numero1 + numero2
-        break
-}
-
-console.log(numero1 + " " + simbolo + " " + numero2 + " = " + resultado)
-
-// Asigno los valores a los elementos
-num1.textContent = numero1
-operacion.textContent = simbolo
-num2.textContent = numero2
-respSystem.value = resultado
-
+generarCaptcha(num1, num2, operacion, respSystemAjax) // Genero el captcha al cargar la página
 
 // 2.- Al pulsar el botón "enviar" del formulario 02 envíamos los valores por Ajax o por FETCH API al servidor y esperamos su respuesta
 // Si la respuesta es correcta, muestra un mensaje de éxito, si no, muestra un mensaje de error.
 
 // 2.1 Recogemos los elementos del formulario
-
 const formulario = document.querySelector('#idFormAjax')
 const btnEnviarAjax = document.querySelector('#btnEnviarAjax')
 const inputs = formulario.querySelectorAll('input, textarea')
 
-const mensajeGraciasAjax = document.querySelector('#mensajeGraciasAjax')
+const modalEnvioOk = document.querySelector('#modalEnvioOk')
+const mensajeOk = document.querySelector('#mensajeOk')
+const btnMostrarFormulario = document.querySelector('#btnMostrarFormulario')
+
 const errorAjax = document.querySelector('#errorAjax')
 const loader = document.querySelector('#moduleloader01')
 
+// 2.2 Agregamos el evento de click al botón de mostrar el formulario para volver a mostrar el formulario después de un envío exitoso
+btnMostrarFormulario.addEventListener('click', function() {
+    modalEnvioOk.style.display = "none"
+    formulario.style.display = "flex"
+    inputs.forEach(input => input.disabled = false)
+    inputs.forEach(input => {
+        if (input.type !== "submit") {
+            input.value = ""
+        }
+    }) // Limpio los campos de texto del formulario
+    inputs.forEach(input => {
+        if (input.type === "checkbox") {
+            input.checked = false
+        }
+    }) // Desmarco los checkboxes
+    btnEnviarAjax.disabled = false
+    generarCaptcha(num1, num2, operacion, respSystemAjax) // Genero un nuevo captcha para el formulario
+})
+
+// 2.3 Agregamos el evento de submit al formulario para enviar los datos por Ajax o Fetch API
 formulario.addEventListener('submit', function(event) {
     event.preventDefault() // Evito que el formulario se envíe de manera automática
     const camposFormulario = new FormData(document.forms.namedItem("idFormAjax")) // Recogo los datos del formulario
@@ -179,12 +148,14 @@ formulario.addEventListener('submit', function(event) {
         if (fallo) {
             console.log("Error: " + mensaje)
             errorAjax.innerHTML = mensaje
-            mensajeGraciasAjax.innerText = ""
         } else {
             console.log("Éxito: " + mensaje)
-            mensajeGraciasAjax.innerHTML = mensaje
             errorAjax.innerText = ""
             formulario.style.display = "none" // Oculto el formulario
+
+            // Mostrar un modal de éxito
+            mensajeOk.innerHTML = mensaje
+            modalEnvioOk.style.display = "flex"
         }
     })
     .catch(error => {
@@ -197,7 +168,6 @@ formulario.addEventListener('submit', function(event) {
         inputs.forEach(el => {
             el.disabled = false
         })
-
 
         console.log("Error en la comunicación con el servidor: " + error)
         errorAjax.innerHTML = "Error en la comunicación con el servidor. Por favor, inténtalo de nuevo más tarde."
@@ -214,3 +184,54 @@ formulario.addEventListener('submit', function(event) {
         el.disabled = true
     })
 })
+
+// Función para generar el captcha de la operación matemática
+function generarCaptcha(num1, num2, operacion, respSystemAjax) {
+    // Calculo los dos números random (entre 1 y 10) y los asigno a los elementos y hago la suma (me aseguro que los valores sean Number)
+    let numero1 = (Number)(Math.floor(Math.random() * 10))
+    let numero2 = (Number)(Math.floor(Math.random() * 10))
+
+    // Conseguir un número aleatorio del 1 al 4
+    let numOperacion = (Number)(Math.floor(Math.random() * 3) + 1)
+    //console.log("Operación: " + numOperacion)
+
+    // Según la operación, asigno los números y calculo el resultado
+    let resultado = 0
+    let simbolo = ""
+
+    switch (numOperacion) {
+        case 1: // Suma
+            simbolo = "+"
+            resultado = numero1 + numero2
+            break
+        case 2: // Resta
+            simbolo = "-"
+            resultado = numero1 - numero2
+            break
+        case 3: // Multiplicación
+            simbolo = "*"
+            resultado = numero1 * numero2
+            break
+        /*
+        case 4: // División
+            console.log("Operación: División")  
+            simbolo = "/"   
+            // Me aseguro de evitar divisiones por cero
+            if (numero2 === 0) {
+                numero2 = 1
+            }
+            resultado = Math.floor(numero1 / numero2) // División entera
+            break
+        */
+        default: // Suma
+            simbolo = "+"
+            resultado = numero1 + numero2
+            break
+    }
+
+    // Asigno los valores a los elementos
+    num1.textContent = numero1
+    operacion.textContent = simbolo
+    num2.textContent = numero2
+    respSystemAjax.value = resultado
+}

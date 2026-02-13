@@ -378,7 +378,13 @@
                     <div>
                         <div class="contenedor-form">
 
-                            <div id="mensajeGraciasAjax"></div>
+                            <div id="modalEnvioOk" class="modal-envio-ok">
+                                <div class="modal-content">
+                                    <h3>¡Formulario enviado correctamente!</h3>
+                                    <p id="mensajeOk"></p>
+                                    <a href="#artform02" class="boton" id="btnMostrarFormulario">Volver</a>
+                                </div>
+                            </div>
 
                             <form id="idFormAjax">
                                 <p class="error" id="errorAjax"></p>
