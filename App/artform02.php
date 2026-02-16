@@ -108,7 +108,7 @@ $correoEmisor = $_ENV['EMAIL_WEB']; // correo del remitente (de la web)
 $nombreEmisor = 'Web Panadería'; // nombre del remitente (de la web)
 $correoDestinatario = $email; // correo del destinatario (administrador)
 $nombreDestinatario = $nombre; // nombre del destinatario (administrador)
-$asunto = $nombre . 'Mensaje recibido'; 
+$asunto = $nombre . ' hemos recibido tu mensaje'; 
 
 $html = file_get_contents('./templates/artform01.html');
 
