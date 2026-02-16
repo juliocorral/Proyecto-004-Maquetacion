@@ -1,10 +1,27 @@
+<?php
+// Cargamos .env para poder leer APP_ENV en local (dev/prod)
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require __DIR__ . '/vendor/autoload.php';
+    if (class_exists('Dotenv\\Dotenv')) {
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->safeLoad();
+    }
+}
+
+require __DIR__ . '/config/helpers.php';
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link rel="icon" type="image/svg+xml" href="<?php echo vite_public_url('vite.svg'); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>proyecto-004-maquetacion</title>
+        <?php
+            // Inyecta CSS/JS desde Vite (manifest en produccion o /src en desarrollo)
+            vite_assets();
+        ?>
     </head>
     <body>
         <nav>
