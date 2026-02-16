@@ -125,7 +125,7 @@ formulario.addEventListener('submit', function(event) {
     */ 
 
 
-    fetch('/App/artform02.php', {
+    fetch('App/artform02.php', {
         method: 'POST',
         body: camposFormulario
     })
