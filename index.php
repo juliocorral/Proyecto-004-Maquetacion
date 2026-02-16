@@ -90,23 +90,23 @@
                             <h4>Atención personalizada</h4>
                             <ul>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                             </ul>
@@ -115,23 +115,23 @@
                             <h4>Los mejores ingredientes</h4>
                             <ul>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                                 <li>
-                                    <img src="./src/resources/checkmark-circle.svg" alt="" title="" />
+                                    <img src="<?php echo vite_public_url('resources/checkmark-circle.svg'); ?>" alt="" title="" />
                                     <span>Lorem ipsum dolor sit amet.</span>
                                 </li>
                             </ul>
@@ -180,32 +180,32 @@
 
                     <div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 01</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 02</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 03</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 04</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 05</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
                         <div class="ficha">
-                            <img src="./src/resources/fast-food-outline.svg" alt="" title="" />
+                            <img src="<?php echo vite_public_url('resources/fast-food-outline.svg'); ?>" alt="" title="" />
                             <h4>(h4) Beneficio 06</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugit repudiandae explicabo accusantium tempore enim, ullam.</p>
                         </div>
@@ -339,25 +339,25 @@
                             <ul>
                                 <li>
                                     <a href="tel:+34943001002">
-                                        <img src="./src/resources/telefono.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/telefono.svg'); ?>" alt="" title="" />
                                         <span>+34 943 001 002</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:info@panaderia.com" target="_blank">
-                                        <img src="./src/resources/mail.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/mail.svg'); ?>" alt="" title="" />
                                         <span>info@panaderia.com</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://wa.me/677001002" target="_blank">
-                                        <img src="./src/resources/whatsapp.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/whatsapp.svg'); ?>" alt="" title="" />
                                         <span>677001001</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank" >
-                                        <img src="./src/resources/map.svg" alt="" title="" class="icono-mapa" />
+                                        <img src="<?php echo vite_public_url('resources/map.svg'); ?>" alt="" title="" class="icono-mapa" />
                                         <span><strong>Área Escuela de Diseño y Nuevas Tecnologías</strong><br>C/ Juan Fermín, Juan F. Gilisagasti Kalea, 4, 1º<br>20018 Donostia / San Sebastián<br>Gipuzkoa</span>
                                     </a>
                                 </li>
@@ -455,25 +455,25 @@
                             <ul>
                                 <li>
                                     <a href="tel:+34943001002">
-                                        <img src="./src/resources/telefono.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/telefono.svg'); ?>" alt="" title="" />
                                         <span>+34 943 001 002</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:info@panaderia.com" target="_blank">
-                                        <img src="./src/resources/mail.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/mail.svg'); ?>" alt="" title="" />
                                         <span>info@panaderia.com</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://wa.me/677001002" target="_blank">
-                                        <img src="./src/resources/whatsapp.svg" alt="" title="" />
+                                        <img src="<?php echo vite_public_url('resources/whatsapp.svg'); ?>" alt="" title="" />
                                         <span>677001001</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://maps.app.goo.gl/WDpiQwbN6gNkuW1NA" target="_blank" >
-                                        <img src="./src/resources/map.svg" alt="" title="" class="icono-mapa" />
+                                        <img src="<?php echo vite_public_url('resources/map.svg'); ?>" alt="" title="" class="icono-mapa" />
                                         <span><strong>Área Escuela de Diseño y Nuevas Tecnologías</strong><br>C/ Juan Fermín, Juan F. Gilisagasti Kalea, 4, 1º<br>20018 Donostia / San Sebastián<br>Gipuzkoa</span>
                                     </a>
                                 </li>
