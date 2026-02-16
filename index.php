@@ -504,8 +504,5 @@ require __DIR__ . '/config/helpers.php';
         <footer>
             <p>&copy; 2025 Maquetación. Todos los derechos reservados.</p>
         </footer>
-
-
-        <script type="module" src="/src/main.js"></script>
   </body>
 </html>
