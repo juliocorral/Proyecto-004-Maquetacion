@@ -307,7 +307,7 @@ require __DIR__ . '/config/helpers.php';
                     <h3>(h3) Solicitar información</h3>
                     <div>
                         <div class="contenedor-form">
-                            <form action="/App/artform01.php" method="post" id="idForm">
+                            <form action="App/artform01.php" method="post" id="idForm">
                                 <?php
                                 if (isset($error)) { ?>
                                     <p class="error">Error en el campo: <?=$campo?> de tipo: <?=$error?></p>
