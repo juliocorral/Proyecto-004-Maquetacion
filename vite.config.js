@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 // Dev server sends /App requests to the PHP server
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? './' : '/',
   server: {
     port: 3000,
     proxy: {
@@ -32,4 +33,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))
