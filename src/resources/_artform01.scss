@@ -16,6 +16,10 @@
         width: 80%;
     }
 
+    h3, h4{
+        padding: c.$padMin;
+    }
+
     >:nth-child(1){
         width: 100%;
         text-align: left;

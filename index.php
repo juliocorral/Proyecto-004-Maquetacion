@@ -307,6 +307,12 @@ require __DIR__ . '/config/helpers.php';
                     <h3>(h3) Solicitar información</h3>
                     <div>
                         <div class="contenedor-form">
+                            <?php
+                            if (!isset($_GET['error']) && isset($_GET['nombre'])) { ?>
+                                <h4>Solicitud enviada correctamente, gracias por contactarnos <?=$nombre?>.</h4> 
+                                <?php
+                                $nombre = '';
+                            } ?>
                             <form action="App/artform01.php" method="post" id="idForm">
                                 <?php
                                 if (isset($error)) { ?>
