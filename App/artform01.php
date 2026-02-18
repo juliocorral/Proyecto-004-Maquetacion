@@ -78,7 +78,7 @@ if (!$aceptar) {
     die;
 }
 
-if ($respUser !== $respSystem || empty($respUser)) {
+if ($respUser !== $respSystem || (empty($respUser) && $respUser !== '0')) {
     $errores[] = "La respuesta a la pregunta de seguridad es incorrecta.";
     header("location:../index.php?error=error&campo=captcha&nombre=$nombre&telefono=$telefono&email=$email&mensaje=$mensaje#artform01");
     die;
